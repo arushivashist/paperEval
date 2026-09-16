@@ -20,6 +20,12 @@ ROOT = Path(__file__).resolve().parents[1]
 TASKS = ROOT / "tasks"
 WORK = ROOT / "work"
 
+try:
+    CLI_VERSION = subprocess.run(["claude", "--version"], capture_output=True,
+                                 text=True, timeout=30).stdout.strip()
+except Exception:  # noqa: BLE001
+    CLI_VERSION = "unknown"
+
 SYSTEM_SUFFIX = (
     "You are an autonomous research-replication agent. Work only inside the current directory. "
     "Never fabricate numbers; every reported value must come from an output you produced. "
@@ -71,6 +77,7 @@ def run_one(task: str, model: str, max_turns: int, max_budget: float, timeout: i
     cmd[2] = prompt
     t0 = time.time()
     meta = {"task": task, "model": model, "started": t0, "timed_out": False,
+            "cli_version": CLI_VERSION,
             "cmd": " ".join(cmd[:2] + ["<prompt.md>"] + cmd[3:])}
     try:
         p = subprocess.run(cmd, cwd=wd, capture_output=True, text=True, timeout=timeout)
