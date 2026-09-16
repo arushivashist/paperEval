@@ -1,4 +1,4 @@
-# ReplicaBench
+# About
 
 Can a Claude Code agent replicate published research on its own, and how much better is Fable 5.1 at it than Opus 5? Full spec: `PRD.md`.
 
