@@ -29,7 +29,8 @@
       }
     ]
   },
-  "human_verdict": "FILL IN after reading ground_truth/human_report.* : replicated | not_replicated | mixed",
+  "human_verdict": "replicated",
+  "human_result_summary": "Human team (Fedor/Capitan/Capitan, SCORE project Malik_covid_wx5k_996g): multilevel mixed-effects model on 39 cities x 25 days (n=975); lockdown coefficient -25.68 (95% CI -27.96, -23.40), z=-22.08, p<.001, i.e. distancing cut mobility a further ~26% vs the original 23% (CI 20-27). Successful replication per SCORE criteria (negative significant lockdown coefficient).",
   "tolerance": {
     "note": "Replicated = same sign, statistically significant at the paper's threshold, and effect size in the same ballpark as the human report."
   }

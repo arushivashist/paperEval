@@ -29,7 +29,8 @@
       }
     ]
   },
-  "human_verdict": "FILL IN after reading ground_truth/human_report.* : replicated | not_replicated | mixed",
+  "human_verdict": "replicated",
+  "human_result_summary": "Human team (Tyner/Huntington-Klein/Fox, COS): county-level regression with state fixed effects, n=3076; Share of Trump Voters coefficient -0.078 (SE 0.018), p=.000015. Scaled per one IQR of Trump share: -1.59 pp of social distancing vs -4.1 pp in the original, so same sign and significant but a notably smaller effect ('consistent but of reduced size'). Report's verdict: replicates the original result.",
   "tolerance": {
     "note": "Replicated = same sign, statistically significant at the paper's threshold, and effect size in the same ballpark as the human report."
   }

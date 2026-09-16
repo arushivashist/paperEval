@@ -38,7 +38,12 @@ def stage(task: str, model: str) -> Path:
                 prev_meta = p.read_text()
                 break
         shutil.rmtree(dst)
-    shutil.copytree(src, dst, ignore=shutil.ignore_patterns("ground_truth", "fetch.sh", "*.pyc"))
+    # task.json holds gold_runs / human_verdict, and the *_results/post_registration files are
+    # prior replication attempts with outcomes — all of it is ground truth the agent must not see (R1)
+    shutil.copytree(src, dst, ignore=shutil.ignore_patterns(
+        "ground_truth", "fetch.sh", "*.pyc", "task.json",
+        "post_registration.json", "interpret_results.json", "execution_results.json",
+        "_log", "_runtime"))
     if (src / "capsule").exists() and not (dst / "capsule").exists():
         shutil.copytree(src / "capsule", dst / "capsule")
     if prev_meta is not None:

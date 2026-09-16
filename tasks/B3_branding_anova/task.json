@@ -25,7 +25,8 @@
     "statistical_significance": "Significant at 1% level",
     "direction": "Positive."
   },
-  "human_verdict": "FILL IN after reading ground_truth/human_report.* : replicated | not_replicated | mixed",
+  "human_verdict": "replicated",
+  "human_result_summary": "Human team (Yoon, SCORE project LeBoeuf_618k): 2 (Level: NoBrand/Brand, between) x 2 (Product Type: utilitarian/symbolic, within) mixed ANOVA on benefit-minus-symbolism difference scores, n=557; Level x Product Type interaction F(1,555)=10.89, p=.001, partial eta^2=.02, same pattern as the original. Successful replication per SCORE criteria.",
   "tolerance": {
     "note": "Replicated = same sign, statistically significant at the paper's threshold, and effect size in the same ballpark as the human report."
   }
