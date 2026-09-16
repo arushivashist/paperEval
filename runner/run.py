@@ -43,7 +43,9 @@ def stage(task: str, model: str) -> Path:
     shutil.copytree(src, dst, ignore=shutil.ignore_patterns(
         "ground_truth", "fetch.sh", "*.pyc", "task.json",
         "post_registration.json", "interpret_results.json", "execution_results.json",
-        "_log", "_runtime"))
+        "_log", "_runtime",
+        # prior-analysis OUTPUTS shipped inside B3's replication_data — they contain the answer
+        "model_summary.txt", "dat_collapsed.csv", "means_by_condition_producttype.csv"))
     if (src / "capsule").exists() and not (dst / "capsule").exists():
         shutil.copytree(src / "capsule", dst / "capsule")
     if prev_meta is not None:
@@ -115,6 +117,10 @@ def main():
     for t in tasks:
         if t.startswith("A") and not (TASKS / t / "capsule").exists():
             sys.exit(f"{t}: run tasks/{t}/fetch.sh first")
+        rd = TASKS / t / "replication_data"
+        for p in rd.iterdir() if rd.exists() else []:
+            if p.is_file() and p.stat().st_size < 200 and p.read_bytes().startswith(b"version https://git-lfs"):
+                sys.exit(f"{t}: {p.name} is a Git-LFS pointer stub, not data; run tasks/{t}/fetch.sh first")
 
     jobs = [(t, m) for m in a.models for t in tasks]
     if a.dry_run:
