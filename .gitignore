@@ -6,3 +6,4 @@ __pycache__/
 tasks/*/capsule/
 tasks/*/capsule.tar.gz
 .DS_Store
+friday.log
