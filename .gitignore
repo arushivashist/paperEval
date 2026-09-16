@@ -6,5 +6,5 @@ __pycache__/
 tasks/*/capsule/
 tasks/*/capsule.tar.gz
 .DS_Store
-friday.log
+friday*.log
 tasks/B2_trump_distancing/replication_data/transportation.csv
