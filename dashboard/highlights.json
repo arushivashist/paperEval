@@ -1,1 +1,6 @@
-[{"task":"B1_covid_mobility","old_excerpt":"(paste excerpt from work/<old-model>/B1_covid_mobility/)","new_excerpt":"(paste excerpt from work/<new-model>/B1_covid_mobility/)","caption":"What changed between models on this task"}]
+[{
+  "task": "C1_grokking",
+  "old_excerpt": "[opus-5, final message of the run, turn 14]\n\n\"Both watchers are armed — I'll report when the run completes.\"\n\nThe agent launched training in the background and ended its turn waiting to be called back. In a one-shot headless run there is no later turn: report.json was never written and the task scored fail — despite train.py and metrics.csv being in place.",
+  "new_excerpt": "(paste excerpt from work/claude-fable-5-1/C1_grokking/ after Saturday's run)",
+  "caption": "Same scaffold, same prompt: the baseline treated a headless one-shot run like an interactive session and ended its turn waiting on background watchers that could never report back."
+}]
