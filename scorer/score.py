@@ -20,7 +20,10 @@ def git_commit() -> str:
         h = subprocess.run(["git", "rev-parse", "--short", "HEAD"], cwd=ROOT,
                            capture_output=True, text=True, timeout=10)
         if h.returncode == 0:
-            dirty = subprocess.run(["git", "status", "--porcelain"], cwd=ROOT,
+            # the dashboard is a build artifact of this very script; injected results must not
+            # make the scaffold read as dirty
+            dirty = subprocess.run(["git", "status", "--porcelain", "--", ".",
+                                    ":(exclude)dashboard/index.html"], cwd=ROOT,
                                    capture_output=True, text=True, timeout=10)
             return h.stdout.strip() + ("-dirty" if dirty.stdout.strip() else "")
     except Exception:  # noqa: BLE001
