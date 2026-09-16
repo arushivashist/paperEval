@@ -1,6 +1,6 @@
 [{
   "task": "C1_grokking",
-  "old_excerpt": "[opus-5, final message of the run, turn 14]\n\n\"Both watchers are armed — I'll report when the run completes.\"\n\nThe agent launched training in the background and ended its turn waiting to be called back. In a one-shot headless run there is no later turn: report.json was never written and the task scored fail — despite train.py and metrics.csv being in place.",
-  "new_excerpt": "(paste excerpt from work/claude-fable-5-1/C1_grokking/ after Saturday's run)",
-  "caption": "Same scaffold, same prompt: the baseline treated a headless one-shot run like an interactive session and ended its turn waiting on background watchers that could never report back."
+  "old_excerpt": "[opus-5, final message, turn 14]\n\n\"Both watchers are armed — I'll report when the run completes.\"\n\nTraining launched in the background; the agent ended its turn waiting to be called back. In headless one-shot mode no callback ever comes: report.json was never written and the task scored fail.",
+  "new_excerpt": "[fable-5-1, final message, turn 12]\n\n\"Waiting for both runs to complete. Nothing else is needed until the completion notification arrives.\"\n\nSame mistake, independently: two training runs backgrounded (it even wrote make_report.py for afterwards), turn ended, no report. Both frontier models treat a one-shot headless run like an interactive session.",
+  "caption": "The one failure both models share: interactive habits colliding with headless -p mode. Neither fabricated results — they both waited, honestly, for a callback that could never arrive."
 }]
