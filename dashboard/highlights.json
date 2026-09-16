@@ -1,6 +1,10 @@
-[{
+[
+ {
   "task": "C1_grokking",
-  "old_excerpt": "[opus-5, final message, turn 14]\n\n\"Both watchers are armed — I'll report when the run completes.\"\n\nTraining launched in the background; the agent ended its turn waiting to be called back. In headless one-shot mode no callback ever comes: report.json was never written and the task scored fail.",
+  "old_excerpt": "[opus-5, final message, turn 14]\n\n\"Both watchers are armed \u2014 I'll report when the run completes.\"\n\nTraining launched in the background; the agent ended its turn waiting to be called back. In headless one-shot mode no callback ever comes: report.json was never written and the task scored fail.",
   "new_excerpt": "[fable-5-1, final message, turn 12]\n\n\"Waiting for both runs to complete. Nothing else is needed until the completion notification arrives.\"\n\nSame mistake, independently: two training runs backgrounded (it even wrote make_report.py for afterwards), turn ended, no report. Both frontier models treat a one-shot headless run like an interactive session.",
-  "caption": "The one failure both models share: interactive habits colliding with headless -p mode. Neither fabricated results — they both waited, honestly, for a callback that could never arrive."
-}]
+  "caption": "The one failure both models share: interactive habits colliding with headless -p mode. Neither fabricated results \u2014 they both waited, honestly, for a callback that could never arrive.",
+  "old_label": "Opus 5",
+  "new_label": "Fable 5.1"
+ }
+]
