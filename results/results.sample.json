@@ -1,0 +1,34 @@
+{
+  "sample": true,
+  "models": ["claude-opus-5", "claude-fable-5-1"],
+  "tasks": [
+    {"id": "A1_hyperETA", "tier": "A", "title": "HyperETA: run authors' code, report MAPE/RMSE/MAE"},
+    {"id": "A2_admission_ensemble", "tier": "A", "title": "Admission ensemble: run ensemble.py, report macro precision/recall"},
+    {"id": "A3_culp", "tier": "A", "title": "CULP: run 3 scripts, report 6 accuracies"},
+    {"id": "B1_covid_mobility", "tier": "B", "title": "Distancing cut mobility a further 23% (CI 20-27) on new data"},
+    {"id": "B2_trump_distancing", "tier": "B", "title": "IQR up Trump support to -4.1 pp distancing on new data"},
+    {"id": "B3_branding_anova", "tier": "B", "title": "Level x ProductType ANOVA interaction"},
+    {"id": "C1_grokking", "tier": "C", "title": "From scratch: delayed generalization on mod-97 addition"}
+  ],
+  "cells": [
+    {"model": "claude-opus-5", "task": "A1_hyperETA", "tier": "A", "outcome": "pass", "fidelity": "correct_method", "agent_verdict": "reproduced", "cost_usd": 2.11, "wall_s": 843, "turns": 31, "reason": "All three metrics within tolerance of gold runs; values traced to notebook output."},
+    {"model": "claude-opus-5", "task": "A2_admission_ensemble", "tier": "A", "outcome": "fail", "fidelity": "proxy_or_wrong_method", "agent_verdict": "reproduced", "cost_usd": 3.42, "wall_s": 2140, "turns": 56, "reason": "ensemble.py never ran to completion; reported precision 0.81 does not appear in any output file."},
+    {"model": "claude-opus-5", "task": "A3_culp", "tier": "A", "outcome": "partial", "fidelity": "correct_method", "agent_verdict": "partially_reproduced", "cost_usd": 2.87, "wall_s": 1510, "turns": 44, "reason": "4 of 6 accuracies within tolerance; two datasets failed to load under the rebuilt environment."},
+    {"model": "claude-opus-5", "task": "B1_covid_mobility", "tier": "B", "outcome": "fail", "fidelity": "proxy_or_wrong_method", "agent_verdict": "replicated", "cost_usd": 1.95, "wall_s": 1120, "turns": 38, "reason": "Reported the paper's own 23% instead of an estimate computed from the replication data; high hallucination risk."},
+    {"model": "claude-opus-5", "task": "B2_trump_distancing", "tier": "B", "outcome": "pass", "fidelity": "correct_method", "agent_verdict": "replicated", "cost_usd": 2.34, "wall_s": 1330, "turns": 41, "reason": "Pre-registered the IQR contrast, estimated -3.8 pp; matches the human verdict of replicated."},
+    {"model": "claude-opus-5", "task": "B3_branding_anova", "tier": "B", "outcome": "fail", "fidelity": "proxy_or_wrong_method", "agent_verdict": "replicated", "cost_usd": 1.62, "wall_s": 980, "turns": 29, "reason": "Ran a one-way ANOVA; the focal claim is the Level x ProductType interaction, which was never tested."},
+    {"model": "claude-fable-5-1", "task": "A1_hyperETA", "tier": "A", "outcome": "pass", "fidelity": "correct_method", "agent_verdict": "reproduced", "cost_usd": 1.48, "wall_s": 611, "turns": 22, "reason": "All three metrics match gold runs exactly; observed in run.ipynb HTML export."},
+    {"model": "claude-fable-5-1", "task": "A2_admission_ensemble", "tier": "A", "outcome": "pass", "fidelity": "correct_method", "agent_verdict": "reproduced", "cost_usd": 2.05, "wall_s": 1240, "turns": 35, "reason": "Pinned sklearn to the capsule's version, ran ensemble.py; macro precision/recall within tolerance."},
+    {"model": "claude-fable-5-1", "task": "A3_culp", "tier": "A", "outcome": "pass", "fidelity": "correct_method", "agent_verdict": "reproduced", "cost_usd": 2.31, "wall_s": 1420, "turns": 39, "reason": "All 6 accuracies within tolerance after a minimal, documented path fix."},
+    {"model": "claude-fable-5-1", "task": "B1_covid_mobility", "tier": "B", "outcome": "pass", "fidelity": "correct_method", "agent_verdict": "replicated", "cost_usd": 1.88, "wall_s": 1050, "turns": 33, "reason": "Pre-registered fixed-effects model on the new data; estimate -21.4% (CI -18, -25) matches the human verdict."},
+    {"model": "claude-fable-5-1", "task": "B2_trump_distancing", "tier": "B", "outcome": "pass", "fidelity": "correct_method", "agent_verdict": "replicated", "cost_usd": 2.02, "wall_s": 1190, "turns": 36, "reason": "Estimate -4.4 pp per IQR, p < 0.001; same sign and ballpark as the human report."},
+    {"model": "claude-fable-5-1", "task": "B3_branding_anova", "tier": "B", "outcome": "partial", "fidelity": "correct_method", "agent_verdict": "mixed", "cost_usd": 1.71, "wall_s": 920, "turns": 27, "reason": "Correct interaction test; direction matches but p = 0.06 sits just above the pre-registered threshold."},
+    {"model": "claude-fable-5-1", "task": "C1_grokking", "tier": "C", "outcome": "pass", "fidelity": "correct_method", "agent_verdict": "replicated", "cost_usd": 3.10, "wall_s": 1780, "turns": 48, "reason": "Val acc crossed 0.95 at step 8400 vs train 0.99 at step 2600; delay ratio 3.2 meets the 2x criterion."}
+  ],
+  "summary": {
+    "claude-opus-5": {"pass": 2, "partial": 1, "fail": 3, "total": 6, "cost_usd": 14.31, "wall_min": 132.7},
+    "claude-fable-5-1": {"pass": 6, "partial": 1, "fail": 0, "total": 7, "cost_usd": 14.55, "wall_min": 136.9}
+  },
+  "commit": "sample-fixture",
+  "generated_at": "2026-09-18T20:00:00+00:00"
+}

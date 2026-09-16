@@ -1,0 +1,15 @@
+{
+  "id": "C1_grokking",
+  "tier": "C",
+  "kind": "replicate_from_scratch",
+  "title": "Grokking: Generalization Beyond Overfitting on Small Algorithmic Datasets (Power et al., 2022)",
+  "arxiv": "2201.02177",
+  "claim": "A small transformer trained on modular addition (p=97, ~50% of pairs as training data) first memorizes (train acc ~100%, val acc near chance) and then, many steps later, abruptly generalizes (val acc -> ~100%). Weight decay is important for the delayed generalization.",
+  "success_criteria": {
+    "train_acc_reaches": 0.99,
+    "val_acc_reaches": 0.95,
+    "delay_required": "val acc must cross 0.95 at least 2x the step count at which train acc first crossed 0.99",
+    "budget": "CPU only, <= 30 minutes wall time"
+  },
+  "human_verdict": "replicated (widely reproduced)"
+}

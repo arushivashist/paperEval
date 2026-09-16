@@ -1,0 +1,38 @@
+{
+  "id": "A1_hyperETA",
+  "tier": "A",
+  "kind": "reproduce_with_code",
+  "title": "HyperETA: A Non\u2013Deep Learning Method for Estimated Time of Arrival",
+  "source": "CORE-Bench (siegelz/core-bench) train set",
+  "capsule_id": "capsule-5367566",
+  "doi": "https://doi.org/10.24433/CO.3533137.v1",
+  "language": "Python",
+  "original_instruction": "Run run.ipynb and convert the results to html.",
+  "questions": {
+    "Report the HyperETA MAPE with no DTW.": {
+      "gold_runs": [
+        17.374344500709498,
+        17.374344500709498,
+        17.374344500709498
+      ]
+    },
+    "Report the HyperETA RMSE with no DTW.": {
+      "gold_runs": [
+        459.7782074000463,
+        459.7782074000463,
+        459.7782074000463
+      ]
+    },
+    "Report the HyperETA MAE with no DTW.": {
+      "gold_runs": [
+        323.0,
+        323.0,
+        323.0
+      ]
+    }
+  },
+  "tolerance": {
+    "numeric_rel": 0.05,
+    "note": "CORE-Bench uses a 95% prediction interval over gold runs; 5% relative is a practical stand-in when only one gold run exists."
+  }
+}

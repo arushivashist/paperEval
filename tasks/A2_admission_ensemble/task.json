@@ -1,0 +1,31 @@
+{
+  "id": "A2_admission_ensemble",
+  "tier": "A",
+  "kind": "reproduce_with_code",
+  "title": "A University Admission Prediction System using Stacked Ensemble Learning",
+  "source": "CORE-Bench (siegelz/core-bench) train set",
+  "capsule_id": "capsule-0238624",
+  "doi": "https://doi.org/10.24433/CO.1531178.v1",
+  "language": "Python",
+  "original_instruction": "Run 'ensemble.py'.",
+  "questions": {
+    "Report the macro avg precision from the classification report.": {
+      "gold_runs": [
+        0.88,
+        0.87,
+        0.88
+      ]
+    },
+    "Report the macro avg recall from the classification report.": {
+      "gold_runs": [
+        0.88,
+        0.87,
+        0.88
+      ]
+    }
+  },
+  "tolerance": {
+    "numeric_rel": 0.05,
+    "note": "CORE-Bench uses a 95% prediction interval over gold runs; 5% relative is a practical stand-in when only one gold run exists."
+  }
+}

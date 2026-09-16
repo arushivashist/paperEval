@@ -1,0 +1,32 @@
+{
+  "id": "B3_branding_anova",
+  "tier": "B",
+  "kind": "replicate_from_paper_with_new_data",
+  "source": "ReplicatorBench (CenterForOpenScience/llm-benchmarking) study 23",
+  "claim": {
+    "hypothesis": "Products predominantly associated with utilitarian attitudes at the category level support less utilitarian and more symbolic attitudes at the brand level. Products predominantly associated with symbolic attitudes at the category level support less symbolic and more utilitarian attitudes at the brand level.",
+    "hypothesis_location": "Section: The Effect of Branding on Attitude Functions; p. 350.",
+    "statement": "...products supporting predominantly utilitarian category-level attitudes supported somewhat more symbolic attitudes when branded, whereas products supporting predominantly symbolic category-level attitudes supported less symbolic attitudes when branded\u2026predicted level \u00d7product type interaction (F(1, 204) = 7.70, p = .006).",
+    "statement_location": "Section: The Effect of Branding on Attitude Functions; Subsection: STUDY 1B: A BROADER SET OF CATEGORIES AND BRANDS; p. 351.",
+    "study_type": "Experimental"
+  },
+  "original_results": {
+    "summary": " products supporting predominantly utilitarian category-level attitudes supported somewhat more symbolic attitudes when branded, whereas products supporting predominantly symbolic category-level attitudes supported less symbolic attitudes when branded",
+    "outcome_name": "Benefit\u2013Symbolism Difference Score",
+    "value": "7.70",
+    "unit": "not stated",
+    "effect_size": "not stated",
+    "confidence_interval": {
+      "lower": "not stated",
+      "upper": "not stated",
+      "level": "not stated"
+    },
+    "p_value": "p = 0.006",
+    "statistical_significance": "Significant at 1% level",
+    "direction": "Positive."
+  },
+  "human_verdict": "FILL IN after reading ground_truth/human_report.* : replicated | not_replicated | mixed",
+  "tolerance": {
+    "note": "Replicated = same sign, statistically significant at the paper's threshold, and effect size in the same ballpark as the human report."
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "B1_covid_mobility",
+  "tier": "B",
+  "kind": "replicate_from_paper_with_new_data",
+  "source": "ReplicatorBench (CenterForOpenScience/llm-benchmarking) study 16",
+  "claim": {
+    "hypothesis": "The introduction of social distancing measures is associated with a decrease in mobility.",
+    "hypothesis_location": "The relation is mentioned in the first paragraph and explicitly stated in third (the paper has only four paragraphs) where the results are reported.",
+    "statement": "Social distancing measures decreased the mobility by anadditional 23% (95% CI: 20%, 27%).",
+    "statement_location": "Third paragraph with results.",
+    "study_type": "Observational"
+  },
+  "original_results": {
+    "summary": "The mobility in general decreased in the discussed period. Social distancing measures decreased the mobility by an additional 23% (95% CI: 20%, 27%).",
+    "numerical_results": [
+      {
+        "outcome_name": "mobility",
+        "value": "23",
+        "unit": "%",
+        "effect_size": "not stated",
+        "confidence_interval": {
+          "lower": "20%",
+          "upper": "27%",
+          "level": "95%"
+        },
+        "p_value": "not stated",
+        "statistical_significance": "not stated",
+        "direction": "negative"
+      }
+    ]
+  },
+  "human_verdict": "FILL IN after reading ground_truth/human_report.* : replicated | not_replicated | mixed",
+  "tolerance": {
+    "note": "Replicated = same sign, statistically significant at the paper's threshold, and effect size in the same ballpark as the human report."
+  }
+}

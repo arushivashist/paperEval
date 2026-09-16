@@ -1,0 +1,8 @@
+work/
+results/results.json
+results/recap/
+__pycache__/
+*.pyc
+tasks/*/capsule/
+tasks/*/capsule.tar.gz
+.DS_Store

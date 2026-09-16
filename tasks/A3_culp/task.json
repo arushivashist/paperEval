@@ -1,0 +1,59 @@
+{
+  "id": "A3_culp",
+  "tier": "A",
+  "kind": "reproduce_with_code",
+  "title": "CULP: Classification Using Link Prediction",
+  "source": "CORE-Bench (siegelz/core-bench) train set",
+  "capsule_id": "capsule-6460826",
+  "doi": "https://doi.org/10.24433/CO.0609cc4f-8b95-4d94-8fd0-9456d262b3a5",
+  "language": "Python",
+  "original_instruction": "Run 'iris_sample.py', 'zoo_sample.py', and 'wine_sample.py'",
+  "questions": {
+    "Report the CN prediction accuracy for the Iris dataset.": {
+      "gold_runs": [
+        100,
+        100,
+        100
+      ]
+    },
+    "Report the AA prediction acccuracy for the Iris dataset.": {
+      "gold_runs": [
+        100,
+        100,
+        100
+      ]
+    },
+    "Report the CN prediction acccuracy for the Zoo dataset.": {
+      "gold_runs": [
+        100,
+        100,
+        100
+      ]
+    },
+    "Report the AA prediction acccuracy for the Zoo dataset.": {
+      "gold_runs": [
+        100,
+        100,
+        100
+      ]
+    },
+    "Report the CN prediction acccuracy for the Wine dataset.": {
+      "gold_runs": [
+        97.22,
+        97.22,
+        97.22
+      ]
+    },
+    "Report the AA prediction acccuracy for the Wine dataset.": {
+      "gold_runs": [
+        97.22,
+        97.22,
+        97.22
+      ]
+    }
+  },
+  "tolerance": {
+    "numeric_rel": 0.05,
+    "note": "CORE-Bench uses a 95% prediction interval over gold runs; 5% relative is a practical stand-in when only one gold run exists."
+  }
+}

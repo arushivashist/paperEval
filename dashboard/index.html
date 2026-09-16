@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ReplicaBench</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script id="data" type="application/json">{"sample": true, "models": ["claude-opus-5", "claude-fable-5-1"], "tasks": [{"id": "A1_hyperETA", "tier": "A", "title": "HyperETA: run authors' code, report MAPE/RMSE/MAE"}, {"id": "A2_admission_ensemble", "tier": "A", "title": "Admission ensemble: run ensemble.py, report macro precision/recall"}, {"id": "A3_culp", "tier": "A", "title": "CULP: run 3 scripts, report 6 accuracies"}, {"id": "B1_covid_mobility", "tier": "B", "title": "Distancing cut mobility a further 23% (CI 20-27) on new data"}, {"id": "B2_trump_distancing", "tier": "B", "title": "IQR up Trump support to -4.1 pp distancing on new data"}, {"id": "B3_branding_anova", "tier": "B", "title": "Level x ProductType ANOVA interaction"}, {"id": "C1_grokking", "tier": "C", "title": "From scratch: delayed generalization on mod-97 addition"}], "cells": [{"model": "claude-opus-5", "task": "A1_hyperETA", "tier": "A", "outcome": "pass", "fidelity": "correct_method", "agent_verdict": "reproduced", "cost_usd": 2.11, "wall_s": 843, "turns": 31, "reason": "All three metrics within tolerance of gold runs; values traced to notebook output."}, {"model": "claude-opus-5", "task": "A2_admission_ensemble", "tier": "A", "outcome": "fail", "fidelity": "proxy_or_wrong_method", "agent_verdict": "reproduced", "cost_usd": 3.42, "wall_s": 2140, "turns": 56, "reason": "ensemble.py never ran to completion; reported precision 0.81 does not appear in any output file."}, {"model": "claude-opus-5", "task": "A3_culp", "tier": "A", "outcome": "partial", "fidelity": "correct_method", "agent_verdict": "partially_reproduced", "cost_usd": 2.87, "wall_s": 1510, "turns": 44, "reason": "4 of 6 accuracies within tolerance; two datasets failed to load under the rebuilt environment."}, {"model": "claude-opus-5", "task": "B1_covid_mobility", "tier": "B", "outcome": "fail", "fidelity": "proxy_or_wrong_method", "agent_verdict": "replicated", "cost_usd": 1.95, "wall_s": 1120, "turns": 38, "reason": "Reported the paper's own 23% instead of an estimate computed from the replication data; high hallucination risk."}, {"model": "claude-opus-5", "task": "B2_trump_distancing", "tier": "B", "outcome": "pass", "fidelity": "correct_method", "agent_verdict": "replicated", "cost_usd": 2.34, "wall_s": 1330, "turns": 41, "reason": "Pre-registered the IQR contrast, estimated -3.8 pp; matches the human verdict of replicated."}, {"model": "claude-opus-5", "task": "B3_branding_anova", "tier": "B", "outcome": "fail", "fidelity": "proxy_or_wrong_method", "agent_verdict": "replicated", "cost_usd": 1.62, "wall_s": 980, "turns": 29, "reason": "Ran a one-way ANOVA; the focal claim is the Level x ProductType interaction, which was never tested."}, {"model": "claude-fable-5-1", "task": "A1_hyperETA", "tier": "A", "outcome": "pass", "fidelity": "correct_method", "agent_verdict": "reproduced", "cost_usd": 1.48, "wall_s": 611, "turns": 22, "reason": "All three metrics match gold runs exactly; observed in run.ipynb HTML export."}, {"model": "claude-fable-5-1", "task": "A2_admission_ensemble", "tier": "A", "outcome": "pass", "fidelity": "correct_method", "agent_verdict": "reproduced", "cost_usd": 2.05, "wall_s": 1240, "turns": 35, "reason": "Pinned sklearn to the capsule's version, ran ensemble.py; macro precision/recall within tolerance."}, {"model": "claude-fable-5-1", "task": "A3_culp", "tier": "A", "outcome": "pass", "fidelity": "correct_method", "agent_verdict": "reproduced", "cost_usd": 2.31, "wall_s": 1420, "turns": 39, "reason": "All 6 accuracies within tolerance after a minimal, documented path fix."}, {"model": "claude-fable-5-1", "task": "B1_covid_mobility", "tier": "B", "outcome": "pass", "fidelity": "correct_method", "agent_verdict": "replicated", "cost_usd": 1.88, "wall_s": 1050, "turns": 33, "reason": "Pre-registered fixed-effects model on the new data; estimate -21.4% (CI -18, -25) matches the human verdict."}, {"model": "claude-fable-5-1", "task": "B2_trump_distancing", "tier": "B", "outcome": "pass", "fidelity": "correct_method", "agent_verdict": "replicated", "cost_usd": 2.02, "wall_s": 1190, "turns": 36, "reason": "Estimate -4.4 pp per IQR, p < 0.001; same sign and ballpark as the human report."}, {"model": "claude-fable-5-1", "task": "B3_branding_anova", "tier": "B", "outcome": "partial", "fidelity": "correct_method", "agent_verdict": "mixed", "cost_usd": 1.71, "wall_s": 920, "turns": 27, "reason": "Correct interaction test; direction matches but p = 0.06 sits just above the pre-registered threshold."}, {"model": "claude-fable-5-1", "task": "C1_grokking", "tier": "C", "outcome": "pass", "fidelity": "correct_method", "agent_verdict": "replicated", "cost_usd": 3.1, "wall_s": 1780, "turns": 48, "reason": "Val acc crossed 0.95 at step 8400 vs train 0.99 at step 2600; delay ratio 3.2 meets the 2x criterion."}], "summary": {"claude-opus-5": {"pass": 2, "partial": 1, "fail": 3, "total": 6, "cost_usd": 14.31, "wall_min": 132.7}, "claude-fable-5-1": {"pass": 6, "partial": 1, "fail": 0, "total": 7, "cost_usd": 14.55, "wall_min": 136.9}}, "commit": "sample-fixture", "generated_at": "2026-09-18T20:00:00+00:00"}</script>
+<script id="highlights" type="application/json">[{"task": "B1_covid_mobility", "old_excerpt": "(paste excerpt from work/<old-model>/B1_covid_mobility/)", "new_excerpt": "(paste excerpt from work/<new-model>/B1_covid_mobility/)", "caption": "What changed between models on this task"}]</script>
+<style>
+:root{
+  --bg:#f7f7f5; --panel:#ffffff; --ink:#16181d; --muted:#5c6370; --line:#e3e3de;
+  --pass:#0d7a3f; --pass-bg:#d9f2e2; --partial:#9a6200; --partial-bg:#fdeecb;
+  --fail:#b3261e; --fail-bg:#fadcda; --queued:#5c6370; --queued-bg:#ececea;
+  --ungraded:#3d5a99; --ungraded-bg:#e0e8f8;
+  --m0:#4a5568; --m1:#d97706;
+  --accent:#d97706;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#101216; --panel:#181b21; --ink:#f0f1f4; --muted:#a6adbb; --line:#2a2e37;
+    --pass:#5fe39a; --pass-bg:#123524; --partial:#ffc95c; --partial-bg:#3a2c07;
+    --fail:#ff8a80; --fail-bg:#421512; --queued:#a6adbb; --queued-bg:#23262d;
+    --ungraded:#9db8f0; --ungraded-bg:#1a2540;
+    --m0:#9aa7bd; --m1:#f5a742;
+    --accent:#f5a742;
+  }
+}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%}
+body{
+  font-family:Inter,system-ui,sans-serif; font-size:16px; line-height:1.35;
+  background:var(--bg); color:var(--ink);
+  display:flex; flex-direction:column; gap:14px;
+  padding:20px 28px 12px; max-width:1720px; margin:0 auto; min-height:100vh;
+}
+.mono{font-family:'JetBrains Mono',ui-monospace,monospace}
+header .kicker{font-size:16px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+h1.hero{font-size:clamp(22px,2.6vw,40px);font-weight:800;letter-spacing:-.01em;margin-top:2px}
+.chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+.chip{border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:4px 14px;font-size:16px;color:var(--muted)}
+.chip b{color:var(--ink)}
+.chip .dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:7px}
+.sample-flag{position:fixed;top:14px;right:16px;background:var(--partial-bg);color:var(--partial);
+  border:1px solid var(--partial);border-radius:8px;padding:3px 10px;font-weight:700;font-size:16px;z-index:9}
+main{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:14px;flex:1;min-height:0}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px 16px;min-width:0}
+.panel h2{font-size:16px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+table{width:100%;border-collapse:collapse}
+th,td{padding:6px 8px;text-align:left;border-bottom:1px solid var(--line);font-size:16px;vertical-align:middle}
+th{color:var(--muted);font-weight:600}
+th.model-col{text-align:center}
+td.cell{text-align:center;cursor:pointer}
+tr.tier-row td{border-bottom:none;padding-top:10px;padding-bottom:2px;
+  font-weight:800;color:var(--accent);font-size:16px;letter-spacing:.06em}
+.task-id{font-weight:600}
+.task-title{color:var(--muted);font-size:16px;max-width:34ch;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.badge{display:inline-block;min-width:92px;padding:3px 10px;border-radius:8px;font-weight:700;font-size:16px}
+.badge.pass{background:var(--pass-bg);color:var(--pass)}
+.badge.partial{background:var(--partial-bg);color:var(--partial)}
+.badge.fail{background:var(--fail-bg);color:var(--fail)}
+.badge.queued{background:var(--queued-bg);color:var(--queued)}
+.badge.ungraded{background:var(--ungraded-bg);color:var(--ungraded)}
+.cell-sub{color:var(--muted);font-size:16px;margin-top:2px}
+td.cell:hover .badge, td.cell.pinned .badge{outline:2px solid var(--accent);outline-offset:1px}
+#reason{margin-top:10px;padding:8px 12px;border-radius:10px;background:var(--bg);
+  border:1px dashed var(--line);color:var(--muted);min-height:44px;font-size:16px}
+#reason b{color:var(--ink)}
+.right{display:flex;flex-direction:column;gap:14px;min-height:0}
+#chart svg{width:100%;height:auto;display:block}
+.gotcha{flex:1;min-height:0;display:flex;flex-direction:column}
+.gotcha .cols{display:grid;grid-template-columns:1fr 1fr;gap:10px;flex:1;min-height:0}
+.gotcha .col{display:flex;flex-direction:column;min-height:0}
+.gotcha .col h3{font-size:16px;font-weight:700;margin-bottom:4px}
+.gotcha pre{flex:1;overflow:auto;background:var(--bg);border:1px solid var(--line);border-radius:10px;
+  padding:10px;font-size:16px;line-height:1.4;white-space:pre-wrap;font-family:'JetBrains Mono',monospace}
+.gotcha .caption{margin-top:8px;color:var(--muted);font-size:16px}
+footer{display:flex;gap:18px;justify-content:space-between;color:var(--muted);font-size:16px;padding:2px 4px}
+@media (max-width:1100px){ main{grid-template-columns:1fr} body{height:auto} }
+</style>
+</head>
+<body>
+<div id="sampleFlag" class="sample-flag" hidden>SAMPLE DATA</div>
+
+<header>
+  <div class="kicker">ReplicaBench &mdash; can Claude replicate published science on its own?</div>
+  <h1 class="hero" id="hero">Waiting for the first runs&hellip;</h1>
+  <div class="chips" id="chips"></div>
+</header>
+
+<main>
+  <section class="panel">
+    <h2>Scorecard</h2>
+    <table id="scorecard"></table>
+    <div id="reason">Hover or tap a cell to see the verifier&rsquo;s reason.</div>
+  </section>
+  <div class="right">
+    <section class="panel">
+      <h2>Passes by tier</h2>
+      <div id="chart"></div>
+    </section>
+    <section class="panel gotcha">
+      <h2 id="gotchaTitle">Gotcha: same task, two models</h2>
+      <div class="cols">
+        <div class="col"><h3 id="oldLabel">Baseline</h3><pre id="oldExcerpt">&mdash;</pre></div>
+        <div class="col"><h3 id="newLabel">New model</h3><pre id="newExcerpt">&mdash;</pre></div>
+      </div>
+      <div class="caption" id="gotchaCaption"></div>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <span>Tier A: run authors&rsquo; code &middot; Tier B: paper + new data &middot; Tier C: paper only</span>
+  <span class="mono" id="stamp"></span>
+</footer>
+
+<script>
+const DATA = JSON.parse(document.getElementById('data').textContent);
+const HIGHLIGHTS = JSON.parse(document.getElementById('highlights').textContent);
+
+const pretty = m => {
+  if (!m) return '';
+  let s = m.replace(/^claude-/, '').replace(/-(\d+)-(\d+)$/, ' $1.$2').replace(/-(\d+)$/, ' $1');
+  return s.split(/[- ]/).map(w => /^\d/.test(w) ? w : w[0].toUpperCase() + w.slice(1)).join(' ');
+};
+const money = v => v == null ? '' : '$' + (+v).toFixed(2);
+const mins  = v => v == null ? '' : Math.round(v / 60) + 'm';
+
+const models = DATA.models || [];
+const tasks  = DATA.tasks  || [];
+const cellIx = {};
+(DATA.cells || []).forEach(c => cellIx[c.model + '|' + c.task] = c);
+const passCount = m => (DATA.summary?.[m]?.pass) ?? 0;
+
+// D2 hero -----------------------------------------------------------------
+(function hero(){
+  const el = document.getElementById('hero');
+  const total = tasks.length;
+  if (!models.length || !total) return;
+  const ranked = [...models].sort((a, b) => passCount(b) - passCount(a));
+  if (models.length === 1) {
+    el.textContent = `${pretty(models[0])} replicated ${passCount(models[0])} of ${total} tasks so far.`;
+  } else {
+    el.textContent = ranked.map(m => `${pretty(m)} replicated ${passCount(m)} of ${total}`).join('; ') + '.';
+  }
+  const chips = document.getElementById('chips');
+  models.forEach((m, i) => {
+    const s = DATA.summary?.[m] || {};
+    const chip = document.createElement('span');
+    chip.className = 'chip';
+    chip.innerHTML = `<span class="dot" style="background:var(--m${i % 2})"></span>` +
+      `<b>${pretty(m)}</b> &nbsp;${money(s.cost_usd)} &middot; ${s.wall_min ?? 0} min &middot; ` +
+      `${s.pass ?? 0} pass / ${s.partial ?? 0} partial / ${s.fail ?? 0} fail`;
+    chips.appendChild(chip);
+  });
+})();
+
+// D3 scorecard ------------------------------------------------------------
+(function scorecard(){
+  const tbl = document.getElementById('scorecard');
+  const reason = document.getElementById('reason');
+  const cols = models.length ? models : ['(no runs yet)'];
+  let html = '<thead><tr><th>Task</th><th></th>' +
+    cols.map(m => `<th class="model-col">${pretty(m)}</th>`).join('') + '</tr></thead><tbody>';
+  const tierName = {A: "Tier A — run the authors' code", B: 'Tier B — paper + new data', C: 'Tier C — paper only'};
+  let lastTier = null;
+  for (const t of tasks) {
+    if (t.tier !== lastTier) {
+      lastTier = t.tier;
+      html += `<tr class="tier-row"><td colspan="${2 + cols.length}">${tierName[t.tier] || 'Tier ' + t.tier}</td></tr>`;
+    }
+    html += `<tr><td class="task-id">${t.id}</td><td class="task-title" title="${(t.title||'').replace(/"/g,'&quot;')}">${t.title || ''}</td>`;
+    for (const m of models) {
+      const c = cellIx[m + '|' + t.id];
+      const out = c ? (c.outcome || 'ungraded') : 'queued';
+      const cls = ['pass','partial','fail','ungraded'].includes(out) ? out : 'queued';
+      const label = cls === 'queued' ? 'queued' : out;
+      const sub = c ? `${money(c.cost_usd)} ${c.cost_usd != null && c.wall_s != null ? '·' : ''} ${mins(c.wall_s)}` : '';
+      const why = c?.reason ? c.reason.replace(/"/g, '&quot;') : '';
+      html += `<td class="cell" data-why="${why}" data-label="[${pretty(m)}] ${t.id}">` +
+              `<span class="badge ${cls}">${label}</span><div class="cell-sub">${sub}</div></td>`;
+    }
+    if (!models.length) html += `<td class="cell"><span class="badge queued">queued</span></td>`;
+    html += '</tr>';
+  }
+  tbl.innerHTML = html + '</tbody>';
+  const show = td => {
+    reason.innerHTML = td.dataset.why
+      ? `<b>${td.dataset.label}</b> — ${td.dataset.why}`
+      : `<b>${td.dataset.label || ''}</b> ${td.dataset.label ? '— no verdict yet.' : 'Hover or tap a cell to see the verifier’s reason.'}`;
+  };
+  tbl.querySelectorAll('td.cell').forEach(td => {
+    td.addEventListener('mouseenter', () => { if (!tbl.querySelector('.pinned')) show(td); });
+    td.addEventListener('click', () => {
+      tbl.querySelectorAll('.pinned').forEach(x => x !== td && x.classList.remove('pinned'));
+      td.classList.toggle('pinned'); show(td);
+    });
+  });
+})();
+
+// D4 chart: pass count by tier per model, inline SVG ----------------------
+(function chart(){
+  const tiers = [...new Set(tasks.map(t => t.tier))].filter(Boolean).sort();
+  if (!tiers.length) { document.getElementById('chart').innerHTML = '<p style="color:var(--muted)">No tasks defined.</p>'; return; }
+  const tierTotals = Object.fromEntries(tiers.map(tr => [tr, tasks.filter(t => t.tier === tr).length]));
+  const passes = {};
+  models.forEach(m => passes[m] = Object.fromEntries(tiers.map(tr => [tr,
+    (DATA.cells || []).filter(c => c.model === m && c.tier === tr && c.outcome === 'pass').length])));
+  const W = 640, H = 240, padL = 34, padB = 34, padT = 26;
+  const maxV = Math.max(1, ...Object.values(tierTotals));
+  const plotH = H - padT - padB, plotW = W - padL - 12;
+  const groupW = plotW / tiers.length, barW = Math.min(52, (groupW - 24) / Math.max(1, models.length));
+  const y = v => padT + plotH * (1 - v / maxV);
+  let s = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Pass count by tier per model" font-family="Inter,sans-serif">`;
+  for (let v = 0; v <= maxV; v++) {
+    s += `<line x1="${padL}" x2="${W-8}" y1="${y(v)}" y2="${y(v)}" stroke="var(--line)" stroke-width="1"/>` +
+         `<text x="${padL-8}" y="${y(v)+5}" text-anchor="end" font-size="14" fill="var(--muted)">${v}</text>`;
+  }
+  tiers.forEach((tr, ti) => {
+    const gx = padL + ti * groupW + (groupW - barW * models.length) / 2;
+    models.forEach((m, mi) => {
+      const v = passes[m][tr], bx = gx + mi * barW;
+      s += `<rect x="${bx+3}" y="${y(v)}" width="${barW-6}" height="${plotH - (y(v)-padT)}" rx="5" fill="var(--m${mi%2})"/>`;
+      if (v > 0) s += `<text x="${bx+barW/2}" y="${y(v)-6}" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">${v}</text>`;
+    });
+    s += `<text x="${padL + ti*groupW + groupW/2}" y="${H-12}" text-anchor="middle" font-size="15" fill="var(--muted)">Tier ${tr} (${tierTotals[tr]} task${tierTotals[tr]>1?'s':''})</text>`;
+  });
+  models.forEach((m, mi) => {
+    const lx = padL + mi * 220;
+    s += `<rect x="${lx}" y="6" width="14" height="14" rx="4" fill="var(--m${mi%2})"/>` +
+         `<text x="${lx+20}" y="18" font-size="15" fill="var(--ink)">${pretty(m)}</text>`;
+  });
+  document.getElementById('chart').innerHTML = s + '</svg>';
+})();
+
+// D5 gotcha panel ---------------------------------------------------------
+(function gotcha(){
+  const h = HIGHLIGHTS && HIGHLIGHTS[0];
+  if (!h || !h.task) return;
+  document.getElementById('gotchaTitle').textContent = 'Gotcha: ' + h.task;
+  document.getElementById('oldExcerpt').textContent = h.old_excerpt || '—';
+  document.getElementById('newExcerpt').textContent = h.new_excerpt || '—';
+  document.getElementById('gotchaCaption').textContent = h.caption || '';
+  if (models.length >= 2) {
+    document.getElementById('oldLabel').textContent = pretty(models[0]);
+    document.getElementById('newLabel').textContent = pretty(models[1]);
+  }
+})();
+
+// Footer stamp (N1) + sample flag ------------------------------------------
+document.getElementById('stamp').textContent =
+  `commit ${DATA.commit || 'n/a'} · generated ${DATA.generated_at || 'n/a'} · grader fixed: claude-sonnet-5`;
+if (DATA.sample) document.getElementById('sampleFlag').hidden = false;
+</script>
+</body>
+</html>
